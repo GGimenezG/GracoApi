@@ -13,6 +13,11 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 	const response = await db.query(sql, params)
 	//const response = await client.query(sql, params);
 	if(response && response[0]){
+		if(response[0].id == '' || response[0]?.oid == 0){
+			res.success = false;
+			res.message = 'Invalid session token'
+			return res;
+		}
         res.success = true;
 		if(response[0].omessage){
 			res.message = response[0].omessage;
