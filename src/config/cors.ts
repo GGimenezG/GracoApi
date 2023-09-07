@@ -16,6 +16,7 @@ const corsito = cors({
 	// ],
 	origin: "*",
 	exposedHeaders: ["Content-Type", "Accept", "X-Requested-With"],
+	headers:["Content-Type"],
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 	credentials: true,
 });
