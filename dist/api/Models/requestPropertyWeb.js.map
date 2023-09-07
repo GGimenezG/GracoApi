@@ -1,0 +1,1 @@
+{"version":3,"file":"requestPropertyWeb.js","sourceRoot":"","sources":["../../../src/api/Models/requestPropertyWeb.ts"],"names":[],"mappings":";;;AAAA,MAAM,kBAAkB;IAIvB;QACO,IAAI,CAAC,UAAU,GAAG,CAAC,CAAC;QACpB,IAAI,CAAC,eAAe,GAAG,CAAC,CAAC;QACzB,IAAI,CAAC,aAAa,GAAE,EAAE,CAAC;IAC9B,CAAC;CACD;AAEQ,gDAAkB"}

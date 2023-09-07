@@ -1,0 +1,1 @@
+{"version":3,"file":"requestManage.js","sourceRoot":"","sources":["../../../src/api/Models/requestManage.ts"],"names":[],"mappings":";;;AAAA,2CAAwC;AAExC,MAAM,aAAc,SAAQ,qBAAS;IAIpC;QACO,KAAK,EAAE,CAAC;QACd,IAAI,CAAC,EAAE,GAAG,CAAC,CAAC;QACN,IAAI,CAAC,GAAG,GAAG,EAAE,CAAC;QACd,IAAI,CAAC,MAAM,GAAG,EAAE,CAAC;IACxB,CAAC;CACD;AAEQ,sCAAa"}
