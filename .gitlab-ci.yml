@@ -1,0 +1,27 @@
+# Node docker image on which this would be run
+image: node:latest
+
+stages:
+    - build
+    - deploy_test
+
+# Job 1:
+Build:
+    stage: build
+    script:
+        - npm install
+        - npm run build
+
+# Job 2:
+# Deploy to staging
+DeployTest:
+    type: deploy
+    stage: deploy_test
+    image: ruby:latest
+    script:
+        - apt-get update -qy
+        - apt-get install -y ruby-dev
+        - gem install dpl
+        - dpl --provider=heroku --app=$HEROKU_APP_API_TEST --api-key=$HEROKU_API_KEY
+    only:
+        - develop
