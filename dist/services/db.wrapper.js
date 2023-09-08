@@ -21,8 +21,10 @@ const query = async (sql, params) => {
             res.message = response[0].omessage;
         }
         else if (response[0].vuser) {
-            res.data = response[0].vuser;
-            res.message = response[0].vtoken;
+            res.success = false;
+            res.message = 'User or password incorrect';
+        }
+        if (response[0].vuser == null) {
         }
         else {
             res.data = response;
