@@ -21,7 +21,7 @@ const query = async (sql, params) => {
             res.message = response[0].omessage;
         }
         else if (response[0].vuser) {
-            res.success = response[0].vuser;
+            res.data = response[0].vuser;
             res.message = response[0].vtoken;
         }
         else if (response[0].vuser == null) {
