@@ -11,17 +11,18 @@ const query = async (sql, params) => {
     const response = await BD_1.db.query(sql, params);
     //const response = await client.query(sql, params);
     if (response && response[0]) {
+        res.success = true;
         if (response.length > 0) {
             res.success = true;
-            res.data = response[0];
+            res.message = 'ok';
+            res.data = response;
         }
         else if (response[0].id == '' || ((_a = response[0]) === null || _a === void 0 ? void 0 : _a.oid) == 0) {
             res.success = false;
             res.message = 'Invalid session token';
             return res;
         }
-        res.success = true;
-        if (response[0].omessage) {
+        else if (response[0].omessage) {
             res.message = response[0].omessage;
         }
         else if (response[0].vuser) {

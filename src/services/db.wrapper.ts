@@ -13,9 +13,11 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 	const response = await db.query(sql, params)
 	//const response = await client.query(sql, params);
 	if(response && response[0]){
+		res.success = true;
 		if(response.length > 0){
 			res.success= true;
-			res.data = response[0];
+			res.message = 'ok';
+			res.data = response;
 		}
 		else
 		if(response[0].id == '' || response[0]?.oid == 0){
@@ -23,7 +25,7 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 			res.message = 'Invalid session token'
 			return res;
 		}
-        res.success = true;
+       else
 		if(response[0].omessage){
 			res.message = response[0].omessage;
 		}
