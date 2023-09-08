@@ -45,13 +45,18 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 
 		}
 
+		if('url' in response[0] && response[0].id == ''){
+			res.success = false;
+			res.message = response[0].omessage || 'Invalid session token'
+			return res;
+		}
 	
-		if(response.length > 0){
+		if(response.length > 1){
 			res.success= true;
 			res.message = 'ok';
 			res.data = response;
 		}
-
+		
 		return res
 
 		

@@ -35,7 +35,12 @@ const query = async (sql, params) => {
             }
             return res;
         }
-        if (response.length > 0) {
+        if ('url' in response[0] && response[0].id == '') {
+            res.success = false;
+            res.message = response[0].omessage || 'Invalid session token';
+            return res;
+        }
+        if (response.length > 1) {
             res.success = true;
             res.message = 'ok';
             res.data = response;
