@@ -12,6 +12,11 @@ const query = async (sql, params) => {
     //const response = await client.query(sql, params);
     if (response && response[0]) {
         if ('oid' in response[0]) {
+            if (response[0].ores == 1) {
+                res.success = true;
+                res.message = response[0].omessage;
+                return res;
+            }
             if (response[0].id == '' || ((_a = response[0]) === null || _a === void 0 ? void 0 : _a.oid) == 0) {
                 res.success = false;
                 res.message = response[0].omessage || 'Invalid session token';

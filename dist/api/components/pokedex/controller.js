@@ -13,7 +13,8 @@ class PokedexController {
         const service = new service_1.PokedexService();
         const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', ''];
         const { id, estado } = req.body;
-        const coeficiente = Math.random() < 0.35;
+        const coeficiente = Math.random() < 0.80;
+        //console.log()
         if (coeficiente) {
             const bodySender = {
                 estado,
@@ -32,7 +33,7 @@ class PokedexController {
         else {
             let res = {
                 success: false,
-                message: 'escapo'
+                message: 'Escapó, sigue intentando'
             };
             response.status(400).send(res);
         }

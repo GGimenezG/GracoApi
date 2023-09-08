@@ -15,6 +15,11 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 	if(response && response[0]){
 
 		if('oid' in response[0]){
+			if(response[0].ores == 1){
+				res.success = true;
+				res.message = response[0].omessage
+				return res;
+			}
 			if(response[0].id == '' || response[0]?.oid == 0){
 				res.success = false;
 				res.message = response[0].omessage || 'Invalid session token'

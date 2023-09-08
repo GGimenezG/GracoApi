@@ -23,6 +23,7 @@ class PokedexController {
 
 
 		const coeficiente =  Math.random() < 0.80;
+		//console.log()
 
 		if(coeficiente){
 
