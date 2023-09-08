@@ -22,7 +22,7 @@ class PokedexController {
 		const { id, estado }: Pokedex = req.body
 
 
-		const coeficiente =  Math.random() < 0.55;
+		const coeficiente =  Math.random() < 0.80;
 
 		if(coeficiente){
 
