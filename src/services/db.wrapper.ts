@@ -24,7 +24,7 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 		}
 		else
 		if(response[0].vuser){
-			res.success = response[0].vuser;
+			res.data = response[0].vuser;
 			res.message = response[0].vtoken;
 		}
 		else
