@@ -13,42 +13,54 @@ export const query = async <T>(sql:string, params:Array<any>) => {
 	const response = await db.query(sql, params)
 	//const response = await client.query(sql, params);
 	if(response && response[0]){
-		res.success = true;
+
+		if('oid' in response[0]){
+			if(response[0].id == '' || response[0]?.oid == 0){
+				res.success = false;
+				res.message = response[0].omessage || 'Invalid session token'
+				return res;
+			}
+		   	else
+			if(response[0].omessage){
+				res.success = true;
+				res.message = response[0].omessage;
+			}
+			return res
+
+		}
+
+		if('vuser' in response[0]){
+			if(response[0].vuser){
+				res.success = true;
+
+				res.data = response[0].vuser;
+				res.message = response[0].vtoken;
+			}
+			else
+			if(response[0].vuser==null){
+				res.success = false;
+				res.message = 'User or password incorrect';
+			}
+			return res
+
+		}
+
+	
 		if(response.length > 0){
 			res.success= true;
 			res.message = 'ok';
 			res.data = response;
 		}
-		else
-		if(response[0].id == '' || response[0]?.oid == 0){
-			res.success = false;
-			res.message = 'Invalid session token'
-			return res;
-		}
-       else
-		if(response[0].omessage){
-			res.message = response[0].omessage;
-		}
-		else
-		if(response[0].vuser){
-			res.data = response[0].vuser;
-			res.message = response[0].vtoken;
-		}
-		else
-		if(response[0].vuser==null){
-			res.success = false;
-			res.message = 'User or password incorrect';
-		}
-		else{
-			res.data = response;
-			res.message = 'ok';
-		}
+
+		return res
+
 		
     }
+	return res
+
 	//console.log(response);
 	//res.data = response.rows
 	//client.release();
-	return res
 	/*await db.query(sql,[...params], (error : any, result :any)=>{
 
 		if(error)

@@ -29,7 +29,7 @@ class UserService {
                 payload.email,
                 payload.password
             ]);
-            if (!res.success) {
+            if (!res.success || (res.data && res.data[0].oid == 0)) {
                 throw res.message;
             }
         }

@@ -13,9 +13,9 @@ class UserService {
 	}
 
 
-	public async Registrar(payload: User):Promise<response<User>> {
+	public async Registrar(payload: User):Promise<response<any>> {
 		
-		let res:response<User> = {
+		let res:response<any> = {
 			success: false,
 			message: ''
 		}
@@ -42,7 +42,7 @@ class UserService {
 				payload.password
 			]);
 
-			if(!res.success) {
+			if(!res.success || (res.data && res.data[0].oid==0)) {
 				throw res.message
 			}
 
