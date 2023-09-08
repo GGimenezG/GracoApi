@@ -11,7 +11,7 @@ const query = async (sql, params) => {
     const response = await BD_1.db.query(sql, params);
     //const response = await client.query(sql, params);
     if (response && response[0]) {
-        if (response[0].length > 0) {
+        if (response.length > 0) {
             res.success = true;
             res.data = response[0];
         }
