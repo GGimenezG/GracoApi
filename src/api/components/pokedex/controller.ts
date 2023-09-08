@@ -22,7 +22,7 @@ class PokedexController {
 		const { id, estado }: Pokedex = req.body
 
 
-		const coeficiente =  Math.random() < 0.35;
+		const coeficiente =  Math.random() < 0.55;
 
 		if(coeficiente){
 
@@ -45,7 +45,7 @@ class PokedexController {
 		else{
 			let res:response<Pokedex[]> = {
 				success: false,
-				message: 'escapo'
+				message: 'Escapó, sigue intentando'
 			}
 			response.status(400).send(res);
 		}
