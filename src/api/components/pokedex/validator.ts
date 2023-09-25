@@ -13,7 +13,7 @@ const PokedexValidation = (req:Request, res:Response, next:NextFunction) => {
     const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
     const paramsBody : any = {
         id:  req.body.id,
-        estado: req.body.description,
+        estado: req.body.estado,
         token,
         user
     }
