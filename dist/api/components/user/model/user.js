@@ -4,11 +4,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 class User {
     constructor() {
-        this.email = '';
-        this.idUsers = 0;
-        this.lastname = '';
-        this.name = '';
-        this.password = '';
+        this.apellido = '';
+        this.clave = '';
+        this.nombre = '';
+        this.mail = '';
+        this.dni = '';
+        this.nacimiento = new Date();
+        this.direccion = '';
+        this.id = 0;
     }
 }
 exports.User = User;

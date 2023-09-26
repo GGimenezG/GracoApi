@@ -8,12 +8,9 @@ class UserController {
     async Create(req, response) {
         const service = new service_1.UserService();
         const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', ''];
-        const { name, lastname, email, password } = req.body;
+        const { apellido, clave, direccion, dni, mail, nacimiento, nombre } = req.body;
         const bodySender = {
-            name,
-            lastname,
-            email,
-            password
+            apellido, clave, direccion, dni, mail, nacimiento, nombre
         };
         const res = await service.Registrar(bodySender);
         if (res.success) {
