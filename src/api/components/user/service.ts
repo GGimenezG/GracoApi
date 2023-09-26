@@ -34,7 +34,7 @@ class UserService {
 			//let sql:string = 'fnregistrarUsuario';
 			let sql:string = 'select * from fnregistrarusuariopropiedades($1, $2, $3, $4, $5, $6, $7)';
 			//let sql:string = `public.registrarUsuario('${payload.name}'::varchar, '${payload.lastname}'::varchar, '${payload.email}'::varchar, '${payload.password}'::varchar)`;
-	
+	 
 			res = await query<User>(sql, [
 				payload.nombre,
 				payload.apellido,
