@@ -13,6 +13,7 @@ class Propiedad extends basicAuth_1.basicAuth {
         this.antiguedad = new Date();
         this.tipo = 0;
         this.estado = 0;
+        this.imagenes = [];
     }
 }
 exports.Propiedad = Propiedad;

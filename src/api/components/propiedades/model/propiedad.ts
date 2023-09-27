@@ -9,7 +9,8 @@ class Propiedad extends basicAuth {
     habitaciones: number;
     antiguedad: Date;
     estado: number;
-    tipo: number
+    tipo: number;
+    imagenes: string[] | string;
 
     constructor(){
         super();
@@ -21,6 +22,7 @@ class Propiedad extends basicAuth {
         this.antiguedad = new Date();
         this.tipo = 0;
         this.estado = 0;
+        this.imagenes = [];
     }
 }
 
