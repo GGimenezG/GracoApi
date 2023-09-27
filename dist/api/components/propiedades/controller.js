@@ -67,10 +67,17 @@ class PropiedadController {
         }
     }
     async FindAllPrincipal(req, response) {
+        var _a;
         const service = new service_1.PropiedadService();
         //const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
         const bodySender = {};
         const res = await service.FindAllPrincipal(bodySender);
+        res.data = (_a = res.data) === null || _a === void 0 ? void 0 : _a.map((r) => {
+            return {
+                ...r,
+                imagenes: r.imagenes.split(',')
+            };
+        });
         if (res.success) {
             response.status(201).send(res);
         }
@@ -79,6 +86,7 @@ class PropiedadController {
         }
     }
     async Find(req, response) {
+        var _a;
         const service = new service_1.PropiedadService();
         const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', ''];
         const bodySender = {
@@ -87,6 +95,12 @@ class PropiedadController {
             user
         };
         const res = await service.Find(bodySender);
+        res.data = (_a = res.data) === null || _a === void 0 ? void 0 : _a.map((r) => {
+            return {
+                ...r,
+                imagenes: r.imagenes.split(',')
+            };
+        });
         if (res.success) {
             response.status(201).send(res);
         }

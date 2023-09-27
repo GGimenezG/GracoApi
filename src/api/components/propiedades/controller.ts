@@ -107,8 +107,14 @@ class PropiedadController {
 
 		}
 
-		const res: response<Propiedad[]> = await service.FindAllPrincipal(bodySender)
-
+		const res: response<any> = await service.FindAllPrincipal(bodySender)
+		
+		res.data = res.data?.map((r:Propiedad)=> {
+			return {
+				...r,
+				imagenes: (<string>r.imagenes).split(',')
+			}
+		} )
 		if (res.success) {
 			response.status(201).send(res);
 		}
@@ -129,8 +135,14 @@ class PropiedadController {
 			user
 		}
 
-		const res: response<Propiedad[]> = await service.Find(bodySender)
+		const res: response<any> = await service.Find(bodySender)
 
+		res.data = res.data?.map((r:Propiedad)=> {
+			return {
+				...r,
+				imagenes: (<string>r.imagenes).split(',')
+			}
+		} )
 		if (res.success) {
 			response.status(201).send(res);
 		}
