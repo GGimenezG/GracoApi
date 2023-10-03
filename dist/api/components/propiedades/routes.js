@@ -7,6 +7,8 @@ const router = (app) => {
     app.get('/propiedad', c.FindAll);
     app.get('/propiedad-principales', c.FindAllPrincipal);
     app.get('/propiedad/:id', c.Find);
+    app.get('/propiedadusuario/:id', c.FindLog);
+    app.get('/historial', c.Historial);
     app.post('/visitar-propiedad', validator_1.visitarValidation, c.Visitar);
     app.post('/tramitar-propiedad', validator_1.tramitarValidation, c.Tramitar);
 };

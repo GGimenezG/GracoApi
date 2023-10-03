@@ -12,6 +12,8 @@ const router = (app:IRouter) => {
     app.get('/propiedad',  c.FindAll);
     app.get('/propiedad-principales', c.FindAllPrincipal);
     app.get('/propiedad/:id', c.Find);
+    app.get('/propiedadusuario/:id', c.FindLog);
+    app.get('/historial', c.Historial);
     
     app.post('/visitar-propiedad', visitarValidation , c.Visitar);
     app.post('/tramitar-propiedad',tramitarValidation, c.Tramitar);

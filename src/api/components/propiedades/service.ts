@@ -212,6 +212,75 @@ class PropiedadService {
 		return res;
 	}
 
+	public async FindLog(payload: any):Promise<response<Propiedad[]>> {
+		
+		let res:response<Propiedad[]> = {
+			success: false,
+			message: ''
+		}
+
+		try{
+
+			/**
+			 * bathrooms_get 
+			 * @param {string} user
+			 * @param {string} token
+			 */
+			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+			let sql:string = 'select * from fnobtenerppropiedadesusuario($1, $2, $3);';
+			
+			res = await query<Propiedad[]>(sql, [
+				payload.propiedad,
+				payload.user,
+				payload.token,
+			]);
+
+			if(!res.success) {
+				throw res.message
+			}
+
+		}
+		catch (error:any){
+			res.message = error;
+		}
+		
+		return res;
+	}
+
+	public async History(payload: request):Promise<response<Propiedad[]>> {
+		
+		let res:response<Propiedad[]> = {
+			success: false,
+			message: ''
+		}
+
+		try{
+
+			/**
+			 * bathrooms_get 
+			 * @param {string} user
+			 * @param {string} token
+			 */
+			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+			let sql:string = 'select * from fnobtenerhistorialusuario($1, $2);';
+			
+			res = await query<Propiedad[]>(sql, [
+				payload.token,
+				payload.user
+			]);
+
+			if(!res.success) {
+				throw res.message
+			}
+
+		}
+		catch (error:any){
+			res.message = error;
+		}
+		
+		return res;
+	}
+
 	
 }
 

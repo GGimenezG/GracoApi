@@ -98,6 +98,36 @@ class PropiedadController {
 
 	}
 
+	public async Historial(req: Request, response: Response) {
+		const service = new PropiedadService();
+
+		const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
+
+			const bodySender: any = {
+				token,
+				user
+			}
+
+		let res: response<any> = await service.History(bodySender)
+
+		res.data = res.data?.map((r:Propiedad)=> {
+			return {
+				...r,
+				imagenes: (<string>r.imagenes).split(',')
+			}
+		} )
+
+
+		if (res.success) {
+			response.status(201).send(res);
+		}
+		else {
+			response.status(400).send(res);
+		}
+
+	}
+
+	
 	public async FindAllPrincipal(req: Request, response: Response) {
 		const service = new PropiedadService();
 
@@ -136,6 +166,34 @@ class PropiedadController {
 		}
 
 		const res: response<any> = await service.Find(bodySender)
+
+		res.data = res.data?.map((r:Propiedad)=> {
+			return {
+				...r,
+				imagenes: (<string>r.imagenes).split(',')
+			}
+		} )
+		if (res.success) {
+			response.status(201).send(res);
+		}
+		else {
+			response.status(400).send(res);
+		}
+
+	}
+
+	public async FindLog(req: Request, response: Response) {
+		const service = new PropiedadService();
+
+		const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
+
+		const bodySender: any = {
+			propiedad: req.body.propiedad,
+			token,
+			user
+		}
+
+		const res: response<any> = await service.FindLog(bodySender)
 
 		res.data = res.data?.map((r:Propiedad)=> {
 			return {

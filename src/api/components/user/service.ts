@@ -57,6 +57,116 @@ class UserService {
 		return res;
 	}
 
+	public async BuscarUsuario(payload: any):Promise<response<User[]>> {
+		
+		let res:response<User[]> = {
+			success: false,
+			message: ''
+		}
+
+		try{
+
+			/**
+			 * bathrooms_get 
+			 * @param {string} user
+			 * @param {string} token
+			 */
+			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+			let sql:string = 'select * from fnobtenerusuario($1, $2);';
+			
+			res = await query<User[]>(sql, [
+				payload.token,
+				payload.user,
+			]);
+
+			if(!res.success) {
+				throw res.message
+			}
+
+		}
+		catch (error:any){
+			res.message = error;
+		}
+		
+		return res;
+	}
+
+	public async CambiarClave(payload: any):Promise<response<any>> {
+		
+		let res:response<any> = {
+			success: false,
+			message: ''
+		}
+
+		try{
+
+			/**
+			 * bathrooms_get 
+			 * @param {string} user
+			 * @param {string} token
+			 */
+			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+			let sql:string = 'select * from fncambiarclave($1, $2, $3, $4);';
+			
+			res = await query<any>(sql, [
+				payload.claveNueva,
+				payload.claveAnterior,
+				payload.token,
+				payload.user,
+			]);
+
+			if(!res.success) {
+				throw res.message
+			}
+
+		}
+		catch (error:any){
+			res.message = error;
+		}
+		
+		return res;
+	}
+
+	public async ModificarUsuario(payload: any):Promise<response<any>> {
+		
+		let res:response<any> = {
+			success: false,
+			message: ''
+		}
+
+		try{
+
+			/**
+			 * bathrooms_get 
+			 * @param {string} user
+			 * @param {string} token
+			 */
+			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+			let sql:string = 'select * from fnmodificiarusuario($1, $2, $3, $4);';
+			
+			res = await query<any>(sql, [
+				payload.nombre,
+				payload.apellido,
+				payload.mail,
+				payload.dni,
+				payload.nacimiento,
+				payload.direccion,
+				payload.token,
+				payload.user,
+			]);
+
+			if(!res.success) {
+				throw res.message
+			}
+
+		}
+		catch (error:any){
+			res.message = error;
+		}
+		
+		return res;
+	}
+	
 }
 
 export {UserService}

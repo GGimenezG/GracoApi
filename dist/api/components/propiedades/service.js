@@ -155,6 +155,59 @@ class PropiedadService {
         }
         return res;
     }
+    async FindLog(payload) {
+        let res = {
+            success: false,
+            message: ''
+        };
+        try {
+            /**
+             * bathrooms_get
+             * @param {string} user
+             * @param {string} token
+             */
+            //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+            let sql = 'select * from fnobtenerppropiedadesusuario($1, $2, $3);';
+            res = await db_wrapper_1.query(sql, [
+                payload.propiedad,
+                payload.user,
+                payload.token,
+            ]);
+            if (!res.success) {
+                throw res.message;
+            }
+        }
+        catch (error) {
+            res.message = error;
+        }
+        return res;
+    }
+    async History(payload) {
+        let res = {
+            success: false,
+            message: ''
+        };
+        try {
+            /**
+             * bathrooms_get
+             * @param {string} user
+             * @param {string} token
+             */
+            //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+            let sql = 'select * from fnobtenerhistorialusuario($1, $2);';
+            res = await db_wrapper_1.query(sql, [
+                payload.token,
+                payload.user
+            ]);
+            if (!res.success) {
+                throw res.message;
+            }
+        }
+        catch (error) {
+            res.message = error;
+        }
+        return res;
+    }
 }
 exports.PropiedadService = PropiedadService;
 //# sourceMappingURL=service.js.map

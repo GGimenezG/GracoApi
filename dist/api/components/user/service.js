@@ -41,6 +41,92 @@ class UserService {
         }
         return res;
     }
+    async BuscarUsuario(payload) {
+        let res = {
+            success: false,
+            message: ''
+        };
+        try {
+            /**
+             * bathrooms_get
+             * @param {string} user
+             * @param {string} token
+             */
+            //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+            let sql = 'select * from fnobtenerusuario($1, $2);';
+            res = await db_wrapper_1.query(sql, [
+                payload.token,
+                payload.user,
+            ]);
+            if (!res.success) {
+                throw res.message;
+            }
+        }
+        catch (error) {
+            res.message = error;
+        }
+        return res;
+    }
+    async CambiarClave(payload) {
+        let res = {
+            success: false,
+            message: ''
+        };
+        try {
+            /**
+             * bathrooms_get
+             * @param {string} user
+             * @param {string} token
+             */
+            //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+            let sql = 'select * from fncambiarclave($1, $2, $3, $4);';
+            res = await db_wrapper_1.query(sql, [
+                payload.claveNueva,
+                payload.claveAnterior,
+                payload.token,
+                payload.user,
+            ]);
+            if (!res.success) {
+                throw res.message;
+            }
+        }
+        catch (error) {
+            res.message = error;
+        }
+        return res;
+    }
+    async ModificarUsuario(payload) {
+        let res = {
+            success: false,
+            message: ''
+        };
+        try {
+            /**
+             * bathrooms_get
+             * @param {string} user
+             * @param {string} token
+             */
+            //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
+            let sql = 'select * from fnmodificiarusuario($1, $2, $3, $4);';
+            res = await db_wrapper_1.query(sql, [
+                payload.nombre,
+                payload.apellido,
+                payload.mail,
+                payload.dni,
+                payload.nacimiento,
+                payload.direccion,
+                payload.token,
+                payload.user,
+            ]);
+            if (!res.success) {
+                throw res.message;
+            }
+        }
+        catch (error) {
+            res.message = error;
+        }
+        return res;
+    }
 }
 exports.UserService = UserService;
 //# sourceMappingURL=service.js.map

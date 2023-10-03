@@ -5,7 +5,7 @@ const loginValidation = (req:Request, res:Response, next:NextFunction) => {
     const typeValidation = req.body && req.body.username && typeof(req.body.username) == 'string' &&req.body.username.includes('@');
 
 	const validationRule = {
-		"email":  "string",
+		"email":  "string|email",
 		"password": "string",
 	}
 

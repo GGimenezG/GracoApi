@@ -5,7 +5,7 @@ const validator = require('../validate');
 const loginValidation = (req, res, next) => {
     const typeValidation = req.body && req.body.username && typeof (req.body.username) == 'string' && req.body.username.includes('@');
     const validationRule = {
-        "email": "string",
+        "email": "string|email",
         "password": "string",
     };
     validator(req.body, validationRule, {}, (err, status) => {
