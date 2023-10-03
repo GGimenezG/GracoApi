@@ -4,7 +4,8 @@
 
 import { IRouter } from "express";
 import { UserController } from "./controller";
-import { AuthValidation } from "api/middleware/validations/auth";
+
+import { AuthValidation } from '../../middleware/validations/auth';
 
 //  export {};
 //  import { Request, Response,IRouter  } from 'express';
