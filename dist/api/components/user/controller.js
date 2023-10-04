@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
 const service_1 = require("./service");
+const atob = require('atob');
 class UserController {
     constructor() {
     }

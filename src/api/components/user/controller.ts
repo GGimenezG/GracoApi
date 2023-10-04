@@ -4,6 +4,8 @@
 import { UserService } from './service';
 import { User } from './model/user';
 import { response } from 'interface/response';
+const atob = require('atob');
+
 
 class UserController {
 
