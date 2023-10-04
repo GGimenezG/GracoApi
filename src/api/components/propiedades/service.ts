@@ -177,9 +177,9 @@ class PropiedadService {
 	}
 	
 
-	public async Find(payload: any):Promise<response<Propiedad[]>> {
+	public async Find(payload: any):Promise<response<Propiedad>> {
 		
-		let res:response<Propiedad[]> = {
+		let res:response<Propiedad> = {
 			success: false,
 			message: ''
 		}
@@ -194,10 +194,8 @@ class PropiedadService {
 			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
 			let sql:string = 'select * from fnobtenerppropiedades($1);';
 			
-			res = await query<Propiedad[]>(sql, [
-				payload.propiedad,
-				payload.user,
-				payload.token,
+			res = await query<Propiedad>(sql, [
+				payload.id
 			]);
 
 			if(!res.success) {
@@ -230,7 +228,7 @@ class PropiedadService {
 			let sql:string = 'select * from fnobtenerppropiedadesusuario($1, $2, $3);';
 			
 			res = await query<Propiedad[]>(sql, [
-				payload.propiedad,
+				payload.id,
 				payload.user,
 				payload.token,
 			]);

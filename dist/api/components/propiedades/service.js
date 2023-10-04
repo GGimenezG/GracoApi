@@ -142,9 +142,7 @@ class PropiedadService {
             //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
             let sql = 'select * from fnobtenerppropiedades($1);';
             res = await db_wrapper_1.query(sql, [
-                payload.propiedad,
-                payload.user,
-                payload.token,
+                payload.id
             ]);
             if (!res.success) {
                 throw res.message;
@@ -169,7 +167,7 @@ class PropiedadService {
             //let sql:string = 'CALL ObtenerPokedex(?,?,?);';
             let sql = 'select * from fnobtenerppropiedadesusuario($1, $2, $3);';
             res = await db_wrapper_1.query(sql, [
-                payload.propiedad,
+                payload.id,
                 payload.user,
                 payload.token,
             ]);

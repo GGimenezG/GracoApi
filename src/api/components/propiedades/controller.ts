@@ -160,19 +160,20 @@ class PropiedadController {
 		const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
 
 		const bodySender: any = {
-			propiedad: req.body.propiedad,
+			id: req.params.id,
 			token,
 			user
 		}
 
-		const res: response<any> = await service.Find(bodySender)
+		let res: response<any> = await service.Find(bodySender)
 
-		res.data = res.data?.map((r:Propiedad)=> {
+		res.data.imagenes = res.data?.imagenes.split(',')
+		/*res.data = res.data?.map((r:Propiedad)=> {
 			return {
 				...r,
 				imagenes: (<string>r.imagenes).split(',')
 			}
-		} )
+		} )*/
 		if (res.success) {
 			response.status(201).send(res);
 		}
@@ -188,7 +189,7 @@ class PropiedadController {
 		const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
 
 		const bodySender: any = {
-			propiedad: req.body.propiedad,
+			id: req.params.id,
 			token,
 			user
 		}

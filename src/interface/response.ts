@@ -1,7 +1,7 @@
 interface response<T> {
 	success: boolean | number;
 	message: string;
-	data?: T[];
+	data?: T[] | any;
 	id?: number;
 }
 
