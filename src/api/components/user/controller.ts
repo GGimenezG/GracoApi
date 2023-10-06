@@ -91,7 +91,6 @@ class UserController {
 		const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', '']
 		const { nombre,
 			apellido,
-			mail,
 			dni,
 			nacimiento,
 			direccion }: any = req.body
@@ -99,7 +98,6 @@ class UserController {
 		const bodySender: any = {
 			nombre,
 			apellido,
-			mail,
 			dni,
 			nacimiento,
 			direccion,
