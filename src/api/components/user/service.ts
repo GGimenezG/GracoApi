@@ -142,12 +142,11 @@ class UserService {
 			 * @param {string} token
 			 */
 			//let sql:string = 'CALL ObtenerPokedex(?,?,?);';
-			let sql:string = 'select * from fnmodificiarusuario($1, $2, $3, $4);';
+			let sql:string = 'select * from fnmodificiarusuario($1, $2, $3, $4, $5, $6, $7);';
 			
 			res = await query<any>(sql, [
 				payload.nombre,
 				payload.apellido,
-				payload.mail,
 				payload.dni,
 				payload.nacimiento,
 				payload.direccion,
