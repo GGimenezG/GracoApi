@@ -58,11 +58,10 @@ class UserController {
     async ModificarUsuario(req, response) {
         const service = new service_1.UserService();
         const [user, username, token] = req.headers.authorization ? atob(req.headers.authorization).split("/") : ['', '', ''];
-        const { nombre, apellido, mail, dni, nacimiento, direccion } = req.body;
+        const { nombre, apellido, dni, nacimiento, direccion } = req.body;
         const bodySender = {
             nombre,
             apellido,
-            mail,
             dni,
             nacimiento,
             direccion,
