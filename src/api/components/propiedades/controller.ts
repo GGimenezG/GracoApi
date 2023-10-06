@@ -139,12 +139,7 @@ class PropiedadController {
 
 		const res: response<any> = await service.FindAllPrincipal(bodySender)
 		
-		res.data = res.data?.map((r:Propiedad)=> {
-			return {
-				...r,
-				imagenes: (<string>r.imagenes).split(',')
-			}
-		} )
+		
 		if (res.success) {
 			response.status(201).send(res);
 		}
